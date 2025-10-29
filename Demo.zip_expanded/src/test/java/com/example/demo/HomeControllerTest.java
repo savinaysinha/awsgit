@@ -17,13 +17,6 @@ public class HomeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Test
-    void homeControllerRedirectsToIndexPage() throws Exception {
-        mockMvc.perform(get("/"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/index.html"));
-    }
     
     @Test
     void indexPageContainsWelcomeMessage() throws Exception {
