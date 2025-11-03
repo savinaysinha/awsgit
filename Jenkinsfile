@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build'
-                sh '${PROJECT_NAME}'
+                sh 'echo "${PROJECT_NAME}"'
             }
         }
         stage('Deployment to TEST Env') {
