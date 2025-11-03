@@ -21,7 +21,6 @@ pipeline {
              }
             steps {
                 echo 'Deployment to PROD Env'
-                sh 'sdad'
             }
         }
     }
