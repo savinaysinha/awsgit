@@ -10,6 +10,7 @@ pipeline{
        stage("Unit Test"){
            steps{
                echo "====++++executing Unit Test++++===="
+                sh 'ls'
                sh 'cd "${project_name}"'
                sh 'mvn test'
            }
