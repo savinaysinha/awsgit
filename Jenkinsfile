@@ -3,10 +3,14 @@ pipeline{
     tools{
         maven 'Maven'
     }
+    environment{
+        project_name="Demo.zip_expanded"
+    }
     stages{
        stage("Unit Test"){
            steps{
                echo "====++++executing Unit Test++++===="
+               sh 'cd "${project_name}"'
                sh 'mvn test'
            }
            post{
@@ -25,6 +29,7 @@ pipeline{
         stage("Build"){
             steps{
                 echo "====++++executing Build++++===="
+                sh 'cd "${project_name}"'
                 sh 'mvn install'
             }
             post{
