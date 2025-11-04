@@ -10,8 +10,9 @@ pipeline{
        stage("Unit Test"){
            steps{
                echo "====++++executing Unit Test++++===="
-                sh 'ls'
-               sh 'cd "${project_name}/"'
+               sh 'ls'
+               sh 'cd "${project_name}"/'
+               sh 'ls'
                sh 'mvn test'
            }
            post{
@@ -30,7 +31,7 @@ pipeline{
         stage("Build"){
             steps{
                 echo "====++++executing Build++++===="
-                sh 'cd "${project_name}/"'
+                sh 'cd "${project_name}"/'
                 sh 'mvn install'
             }
             post{
