@@ -10,10 +10,9 @@ pipeline{
        stage("Unit Test"){
            steps{
                echo "====++++executing Unit Test++++===="
-               sh 'ls'
-               sh 'cd "${WORKSPACE}"/"${project_name}"/'
-               sh 'ls'
-               sh 'mvn test'
+                dir('Demo.zip_expanded') {
+                    sh 'mvn test'
+                }
            }
            post{
                always{
@@ -31,8 +30,9 @@ pipeline{
         stage("Build"){
             steps{
                 echo "====++++executing Build++++===="
-                sh 'cd "${WORKSPACE}"/"${project_name}"/'
-                sh 'mvn install'
+                dir('Demo.zip_expanded') {
+                    sh 'mvn install'
+                }
             }
             post{
                 always{
