@@ -50,7 +50,7 @@ pipeline{
         stage("Deployment to Test Environment"){
             steps{
                 echo "====++++executing Deployment to Test Environment++++===="
-                 deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '9896e19f-67a6-4a2f-9a65-2cd6b00ae41e', path: '', url: '3.111.32.58:8080')], contextPath: 'app', war: '**/*.war'
+                 deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '9896e19f-67a6-4a2f-9a65-2cd6b00ae41e', path: '', url: 'http://3.111.32.58:8080')], contextPath: 'app', war: '**/*.war'
             }
             post{
                 
