@@ -4,13 +4,16 @@ pipeline{
         maven 'Maven'
     }
     environment{
-        project_name="Demo.zip_expanded"
+        PROJECT_NAME='Demo.zip_expanded'
+        TEST_SERVER='http://43.204.228.242:8080'
+        TEST_SERVER='http://43.204.228.242:8080'
+        CONTEXT_PATH='app'
     }
     stages{
        stage("Unit Test"){
            steps{
                echo "====++++executing Unit Test++++===="
-                dir('Demo.zip_expanded') {
+                dir(${PROJECT_NAME}) {
                     sh 'mvn test'
                 }
            }
@@ -30,7 +33,7 @@ pipeline{
         stage("Build"){
             steps{
                 echo "====++++executing Build++++===="
-                dir('Demo.zip_expanded') {
+                dir(${PROJECT_NAME}) {
                     sh 'mvn install'
                 }
             }
@@ -50,7 +53,7 @@ pipeline{
         stage("Deployment to Test Environment"){
             steps{
                 echo "====++++executing Deployment to Test Environment++++===="
-                 deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '9896e19f-67a6-4a2f-9a65-2cd6b00ae41e', path: '', url: 'http://3.111.32.58:8080')], contextPath: 'app', war: '**/*.war'
+                 deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '9896e19f-67a6-4a2f-9a65-2cd6b00ae41e', path: '', url: ${TEST_SERVER})], contextPath: ${CONTEXT_PATH}, war: '**/*.war'
             }
             post{
                 
