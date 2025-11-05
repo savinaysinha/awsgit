@@ -6,7 +6,7 @@ pipeline{
     environment{
         PROJECT_NAME='Demo.zip_expanded'
         TEST_SERVER='http://43.204.228.242:8080'
-        TEST_SERVER='http://43.204.228.242:8080'
+        PROD_SERVER='http://43.204.228.242:8080'
         CONTEXT_PATH='app'
     }
     stages{
