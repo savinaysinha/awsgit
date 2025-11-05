@@ -13,7 +13,7 @@ pipeline{
        stage("Unit Test"){
            steps{
                echo "====++++executing Unit Test++++===="
-                dir(${PROJECT_NAME}) {
+                dir("${PROJECT_NAME}") {
                     sh 'mvn test'
                 }
            }
@@ -33,7 +33,7 @@ pipeline{
         stage("Build"){
             steps{
                 echo "====++++executing Build++++===="
-                dir(${PROJECT_NAME}) {
+                dir("${PROJECT_NAME}") {
                     sh 'mvn install'
                 }
             }
@@ -53,7 +53,7 @@ pipeline{
         stage("Deployment to Test Environment"){
             steps{
                 echo "====++++executing Deployment to Test Environment++++===="
-                 deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '9896e19f-67a6-4a2f-9a65-2cd6b00ae41e', path: '', url: ${TEST_SERVER})], contextPath: ${CONTEXT_PATH}, war: '**/*.war'
+                 deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '9896e19f-67a6-4a2f-9a65-2cd6b00ae41e', path: '', url: "${TEST_SERVER}")], contextPath: "${CONTEXT_PATH}", war: '**/*.war'
             }
             post{
                 
